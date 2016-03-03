@@ -1,0 +1,14 @@
+.eclipse3 {
+  display: block;
+  display: -webkit-box;
+  max-width: 100%;
+  max-height: 60px;
+  margin: 0 auto;
+  font-size: 14px;
+  line-height: 20px;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal!important;
+}

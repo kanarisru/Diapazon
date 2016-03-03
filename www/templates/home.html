@@ -1,0 +1,24 @@
+<ion-view view-title="Главная">
+  <ion-content>
+    <ion-list>
+      <ion-item ng-repeat="item in data.posts" ng-click="goPost(item.id)">
+        <div style="float: left; margin-right: 6px;">
+          <img ng-src="{{imgTh(item)}}"><br>
+          <div ng-bind="FullDate(item.create_time)" style="font-size: 0.7em; float: left";></div>
+        </div>
+        <h4 style="white-space: normal">{{item.name}}</h4>
+        <b>{{test}}</b>
+        <p class_="eclipse3" style="white-space: normal" ng-bind_="item.notice">{{item.notice}}</p>
+        <p style="float: right;">
+          <button class="button button-icon button-clear ion-share">&nbsp;{{item.viewed}}</button>
+          <button class="button button-icon button-clear ion-chatboxes"> {{item.commented}}</button>
+          <button class="button button-icon button-clear ion-thumbsup"></button>
+          <button class="button button-icon button-clear ion-android-star-outline"></button>
+        </p>
+
+      </ion-item>
+
+    </ion-list>
+    <ion-infinite-scroll on-infinite-scroll="addScroll()" on-infinite="addScroll()"></ion-infinite-scroll>
+  </ion-content >
+</ion-view>

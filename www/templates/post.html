@@ -1,0 +1,27 @@
+<ion-view view-title="Search">
+  <ion-content class="padding">
+
+    <p class="eclipse3">При таком подходе необходима соответствующая подготовка модели. Например встроенная в ActiveRecord переменная-массив attributes формируется исключительно исходя из структуры таблицы в базе данных. Если есть необходимость включать в выборку поля из связанных таблиц или вычислимые поля — необходимо в модели перегрузить методы getAttributes и, при необходимости, hasAttribute. В качестве примера моя реализация getAttributes
+
+    </p>
+
+
+
+    <h1>{{post_id}}</h1>
+
+    <ion-slide-box on-slide-changed="slideHasChanged($index)" show-pager="false">
+      <ion-slide>
+        <div class="box blue"><h1>BLUE</h1></div>
+      </ion-slide>
+      <ion-slide>
+        <div class="box yellow"><h1>YELLOW</h1></div>
+      </ion-slide>
+      <ion-slide>
+        <div class="box pink"><h1>PINK</h1></div>
+      </ion-slide>
+    </ion-slide-box>
+
+    <button class="button button-icon button-clear ion-share" menu-toggle="left"></button>
+    <button class="button button-icon button-clear ion-share"></button>
+  </ion-content>
+</ion-view>
