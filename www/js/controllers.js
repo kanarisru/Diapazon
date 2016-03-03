@@ -23,7 +23,7 @@ angular.module('Diapazon.controllers', [])
 
   }])
 
-  .controller('AppCtrl', function($scope, $ionicModal, $timeout) {
+  .controller('AppCtrl', function($scope, $ionicModal, $timeout, DataService) {
 
 
     $scope.loginData = {};
@@ -50,9 +50,9 @@ angular.module('Diapazon.controllers', [])
       }, 1000);
     };
 
-    //DataService.menu(function(result, status){
-    //  if(status===true) $scope.menu = result;
-    //});
+    DataService.menu(function(result, status){
+      if(status===true) $scope.menu = result;
+    });
 
     $scope.goCategory = function(category_id) {
       $state.go("D.category",{categoryId:category_id});
