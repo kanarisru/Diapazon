@@ -21,10 +21,13 @@
   </ion-side-menu-content>
 
   <ion-side-menu side="left" class="dark-bg">
-    <!--<ion-header-bar class="bar-dark"><h1 class="title">Left</h1></ion-header-bar>-->
+    <ion-header-bar class="bar-dark"><h1 class="title">Left</h1></ion-header-bar>
     <ion-content class="dark-bg">
       <ion-list class="dark-bg">
-        <ion-item ng-repeat="item in menu" menu-close ng-click="goCategory(item.id)">{{item.name}}</ion-item>
+        <ion-item menu-close>item 1</ion-item>
+        <ion-item menu-close>item 2</ion-item>
+        <ion-item menu-close>item 3</ion-item>
+        <!--<ion-item ng-repeat="item in menu" menu-close ng-click="goCategory(item.id)">{{item.name}}</ion-item>-->
       </ion-list>
     </ion-content>
   </ion-side-menu>

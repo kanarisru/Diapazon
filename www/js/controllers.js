@@ -1,6 +1,6 @@
 function S00(d){
-  d = "00"+d;
-  return d.substr(d.length-2,2);
+  var r = "00"+d;
+  return new String( r.substr(r.length-2,2) );
 }
 
 
@@ -17,13 +17,13 @@ angular.module('Diapazon.controllers', [])
 
     return {
       home: function() {
-        return  requestGet("lastnews");;
+        return  requestGet("lastnews");
       }
     }
 
   }])
 
-  .controller('AppCtrl', function($scope, $ionicModal, $timeout, DataService) {
+  .controller('AppCtrl', function($scope, $ionicModal, $timeout) {
 
 
     $scope.loginData = {};
@@ -50,9 +50,9 @@ angular.module('Diapazon.controllers', [])
       }, 1000);
     };
 
-    DataService.menu(function(result, status){
-      if(status===true) $scope.menu = result;
-    });
+    //DataService.menu(function(result, status){
+    //  if(status===true) $scope.menu = result;
+    //});
 
     $scope.goCategory = function(category_id) {
       $state.go("D.category",{categoryId:category_id});
@@ -67,37 +67,35 @@ angular.module('Diapazon.controllers', [])
     $scope.post_id = false;
     $scope.post = false;
     $scope.error = false;
-    $scope.data;
-    DataService.home(0, function(result, status){
-      if(status) $scope.data = result;
-      else $scope.error = result;
-
-    });
+    $scope.data = false;
+    //DataService.home(0, function(result, status){
+    //  if(status) $scope.data = result;
+    //  else $scope.error = result;
+    //});
 
     $scope.imgTh = function (post) {
       var t = new Date(1000*post["create_time"]);
-      var path = "http://www.diapazon.kz/files/post/images/"+ t.getFullYear()+"-"+ S00(1+ t.getMonth())+"/thumb/" + post["img_name"];
-      return path;
-    }
+      return "http://www.diapazon.kz/files/post/images/"+ t.getFullYear()+"-"+ S00(1+ t.getMonth())+"/thumb/" + post["img_name"];
+    };
 
     $scope.viewPost = function (id) {
       $scope.post = $scope.data.posts[id];
       $scope.post_id = id;
-    }
+    };
 
     $scope.goPost = function (post_id) {
       $state.go("D.post",{postId:post_id});
-    }
+    };
 
     $scope.FullDate = function(d) {
-      var d = new Date(1000*d);
-      return d.getDate() + "." + S00(1+ d.getMonth()) + "." + d.getFullYear() + " "+ d.getHours() + ":" + d.getMinutes();
-    }
+      var date = new Date(1000*d);
+      return new String(date.getDate() + "." + S00(1+ date.getMonth()) + "." + date.getFullYear() + " "+ date.getHours() + ":" + date.getMinutes());
+    };
 
     $scope.appLoaded = true;
     window.setTimeout(function() {
       $scope.appLoaded = true;
-    })
+    });
 
     $scope.show = function() {
       $ionicLoading.show({
@@ -144,7 +142,7 @@ angular.module('Diapazon.controllers', [])
   })
 
 
-  .controller('Post', function($scope, $stateParams, Server) {
+  .controller('Post', function($scope, $stateParams) {
 
     $scope.post_id = $stateParams.postId;
     console.log("post_id = "+$scope.post_id);
