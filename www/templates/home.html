@@ -1,5 +1,6 @@
 <ion-view view-title="Главная">
   <ion-content>
+    <b>E:</b>{{error}}
     <ion-list>
       <ion-item ng-repeat="item in data.posts" ng-click="goPost(item.id)">
         <div style="float: left; margin-right: 6px;">
