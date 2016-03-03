@@ -26,6 +26,7 @@ var DataService = ['$http',function($http){
       params.LI = _limit;
     }
     params["action"] = service;
+    params["rand"] =  Math.floor(100000 * Math.random() );
     $http.get(_base,{params:params})
       .success(function(result){
         callcack(result, true);
