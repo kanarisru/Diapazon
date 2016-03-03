@@ -66,9 +66,12 @@ angular.module('Diapazon.controllers', [])
 
     $scope.post_id = false;
     $scope.post = false;
+    $scope.error = false;
     $scope.data;
-    DataService.home(0, function(data, status){
-      if(status) $scope.data = data;
+    DataService.home(0, function(result, status){
+      if(status) $scope.data = result;
+      else $scope.error = result;
+
     });
 
     $scope.imgTh = function (post) {
@@ -106,6 +109,7 @@ angular.module('Diapazon.controllers', [])
     };
 
     $scope.test = "";
+    $scope.error = false;
 
 
 
@@ -121,9 +125,13 @@ angular.module('Diapazon.controllers', [])
 
 
       if($scope.data) {
-        DataService.home(Object.keys($scope.data.posts).length, function(result){
-          console.log(Object.keys($scope.data.posts).length);
-          for(var i in result.posts) $scope.data.posts[i] = result.posts[i];
+        DataService.home(Object.keys($scope.data.posts).length, function(result, status){
+
+          if(status) {
+            for(var i in result.posts) $scope.data.posts[i] = result.posts[i];
+          } else {
+            $scope.error = result;
+          }
           $scope.$broadcast('scroll.infiniteScrollComplete');
         })
       } else $scope.$broadcast('scroll.infiniteScrollComplete');
@@ -161,6 +169,7 @@ angular.module('Diapazon.controllers', [])
     $scope.error = false;
     $scope.posts = false;
     $scope.complite = false;
+    $scope.error = "";
     var load_start = false;
 
 
@@ -176,10 +185,12 @@ angular.module('Diapazon.controllers', [])
           }
           list_from = Object.keys($scope.data.posts).length;
           if( result.complite ) $scope.complite = true;
+        } else {
+          $scope.error = result;
         }
       });
       load_start = false;
-    }
+    };
 
     $scope.nextNews = function() {
       if(load_start) return;
@@ -195,5 +206,3 @@ angular.module('Diapazon.controllers', [])
   })
 
 ;
-
-

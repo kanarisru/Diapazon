@@ -45,3 +45,17 @@ var DataService = ['$http',function($http){
 
 
 }];
+
+
+function obj2conv( o ) {
+  var h = "";
+  if(angular.isObject(o)) {
+    for(var k in o) h+="["+k+"]="+obj2conv(o[k])+"   <br>";
+    return h;
+  }
+  if(angular.isArray(o)) {
+    for(var i=0;i< o.length;i++) h+= obj2conv(o[k])+",   <br>";
+    return h;
+  }
+  return o;
+}
