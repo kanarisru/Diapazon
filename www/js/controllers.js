@@ -58,6 +58,8 @@ angular.module('Diapazon.controllers', [])
     //  else {$scope.error = result; $scope.test = "Ошибка"; }
     //});
 
+    $scope.headers = false;
+    $scope.config = false;
 
     $scope.read = function() {
 
@@ -75,12 +77,9 @@ angular.module('Diapazon.controllers', [])
         })
         .error(function(error, status, headers, config){
           $scope.error = error;
-
+          $scope.headers = headers;
+          $scope.config = config;
           alert("Ошибка");
-          console.lock(error);
-          console.lock(status);
-          console.lock(headers);
-          console.lock(config);
         })
     };
 
