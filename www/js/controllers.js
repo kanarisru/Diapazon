@@ -62,7 +62,7 @@ angular.module('Diapazon.controllers', [])
     $scope.read = function() {
 
       var headers = {
-        'Access-Control-Allow-Origin' : 'http://localhost:8100/',
+        'Access-Control-Allow-Origin' : '*',
         'Access-Control-Allow-Methods' : 'POST, GET, OPTIONS, PUT',
         'Content-Type': 'application/json',
         'Accept': 'application/json'
