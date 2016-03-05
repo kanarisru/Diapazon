@@ -60,14 +60,27 @@ angular.module('Diapazon.controllers', [])
 
 
     $scope.read = function() {
-      $http({method:"GET",url:"http://www.diapazon.kz/rest/t.json"})
+
+      var headers = {
+        'Access-Control-Allow-Origin' : 'http://localhost:8100/',
+        'Access-Control-Allow-Methods' : 'POST, GET, OPTIONS, PUT',
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      };
+
+      //$http({method:"GET",url:"http://www.diapazon.kz/rest/t.json", headers: headers})
+      $http({method:"GET",url:"http://www.diapazon.kz/rest/t.php", headers: headers})
         .success(function(data){
           $scope.dt = data;
         })
-        .error(function(error, er2){
+        .error(function(error, status, headers, config){
           $scope.error = error;
-          $scope.error2 = er2;
+
           alert("Ошибка");
+          console.lock(error);
+          console.lock(status);
+          console.lock(headers);
+          console.lock(config);
         })
     };
 
