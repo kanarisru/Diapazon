@@ -23,7 +23,7 @@ angular.module('Diapazon.controllers', [])
 
   }])
 
-  .controller('AppCtrl', function($scope, $ionicModal, $timeout, DataService) {
+  .controller('AppCtrl', function($scope, $ionicModal, $timeout, $http, DataService) {
     $scope.error = false;
     $scope.test = false;
 
@@ -44,6 +44,7 @@ angular.module('Diapazon.controllers', [])
     };
 
 
+
     $scope.doLogin = function() {
       console.log('Doing login', $scope.loginData);
       $timeout(function() {
@@ -51,10 +52,22 @@ angular.module('Diapazon.controllers', [])
       }, 1000);
     };
 
-    DataService.menu(function(result, status){
-      if(status===true) $scope.menu = result;
-      else {$scope.error = result; $scope.test = "Ошибка"; }
-    });
+    //DataService.menu(function(result, status){
+    //  if(status===true) $scope.menu = result;
+    //  else {$scope.error = result; $scope.test = "Ошибка"; }
+    //});
+
+
+    $scope.read = function() {
+      $http({method:"GET",url:"http://www.diapazon.kz/rest/t.json"})
+        .success(function(data){
+          $scope.dt = data;
+        })
+        .error(function(error){
+          $scope.error = error;
+          alert("Ошибка");
+        })
+    };
 
     $scope.goCategory = function(category_id) {
       $state.go("D.category",{categoryId:category_id});
