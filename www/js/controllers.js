@@ -66,6 +66,7 @@ angular.module('Diapazon.controllers', [])
       var headers = {
         'Access-Control-Allow-Origin' : '*',
         'Access-Control-Allow-Methods' : 'POST, GET, OPTIONS, PUT',
+        'Access-Control-Allow-Headers' : 'Cache-Control, Pragma, Origin, Authorization, Content-Type, X-Requested-With',
         'Content-Type': 'application/json',
         'Accept': 'application/json'
       };
