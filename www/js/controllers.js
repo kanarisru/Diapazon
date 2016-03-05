@@ -25,6 +25,7 @@ angular.module('Diapazon.controllers', [])
 
   .controller('AppCtrl', function($scope, $ionicModal, $timeout, DataService) {
     $scope.error = false;
+    $scope.test = false;
 
     $scope.loginData = {};
 
@@ -52,7 +53,7 @@ angular.module('Diapazon.controllers', [])
 
     DataService.menu(function(result, status){
       if(status===true) $scope.menu = result;
-      else $scope.error = result;
+      else {$scope.error = result; $scope.test = "Ошибка"; }
     });
 
     $scope.goCategory = function(category_id) {
