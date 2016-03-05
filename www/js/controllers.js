@@ -25,6 +25,7 @@ angular.module('Diapazon.controllers', [])
 
   .controller('AppCtrl', function($scope, $ionicModal, $timeout, $http, DataService) {
     $scope.error = false;
+    $scope.error2 = false;
     $scope.test = false;
 
     $scope.loginData = {};
@@ -63,8 +64,9 @@ angular.module('Diapazon.controllers', [])
         .success(function(data){
           $scope.dt = data;
         })
-        .error(function(error){
+        .error(function(error, er2){
           $scope.error = error;
+          $scope.error2 = er2;
           alert("Ошибка");
         })
     };
