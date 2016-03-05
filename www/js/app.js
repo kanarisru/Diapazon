@@ -15,7 +15,12 @@ angular.module('Diapazon', ['ionic', 'Diapazon.controllers'])
   });
 })
 
-.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
+.config(function($stateProvider, $urlRouterProvider, $httpProvider, $locationProvider) {
+
+    $httpProvider.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
+    $httpProvider.defaults.useXDomain = true;
+    delete $httpProvider.defaults.headers.common['X-Requested-With'];
+
   $stateProvider
 
     .state('D', {
